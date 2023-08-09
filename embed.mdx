@@ -1,0 +1,34 @@
+---
+title: "Embedding the copilot in your app"
+description: "Learn how to embed the copilot in your app"
+---
+
+OpenCopilot is a web app that you can embed in your app. You can embed the copilot in your app by using the `initAiCoPilot` function.
+
+- Make sure to include the copilot script in your app.
+```html
+<script src="https://opencopilot.so/pilot.js"></script>
+```
+
+- In the head tag, add the following script to initialize the copilot.
+```html
+<script>
+    initAiCoPilot({
+        initialMessages: ["how are the things"], // optional: you can pass an array of messages that will be sent to the copilot when it's initialized
+        token: "your_copilot_token_goes_here", // you can get your token from https://cloud.opencopilot.so
+        triggerSelector: "#triggerSelector", // the selector of the element that will trigger the copilot when clicked
+        headers: { // optional: you can pass your authentication tokens to the copilot or any other header you want to send with every request
+            Authorization: "Bearer your_auth_token_goes_here",
+        },
+    });
+</script>
+```
+
+## Available options
+
+| Option            | Description                                                                                               | Default value |
+|-------------------|-----------------------------------------------------------------------------------------------------------|---------------|
+| `initialMessages` | An array of messages that will be sent to the copilot when it's initialized                               | `[]`          |
+| `token`           | Your copilot token                                                                                        | `""`          |
+| `triggerSelector` | The selector of the element that will trigger the copilot when clicked                                    | `""`          |
+| `headers`         | An object of headers that will be sent with every request (can be used to authenticate your api requests) | `{}`          |
