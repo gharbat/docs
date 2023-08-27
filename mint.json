@@ -26,12 +26,33 @@
       "name": "Changelog",
       "icon": "list",
       "url": "https://github.com/openchatai/opencopilot/releases"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/openchatai/opencopilot",
+      "icon": "github"
     }
   ],
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction", "embed", "authorization"]
+      "pages": [
+        "introduction",
+        "authorization"
+      ]
+    },
+    {
+      "group": "Copilot Widget",
+      "pages": [
+        "widget/embed"
+      ],
+      "icon": "chat"
+    },
+    {
+      "group": "Dashboard",
+      "pages": [
+        "dashboard/overview"
+      ]
     }
   ],
   "footerSocials": {
