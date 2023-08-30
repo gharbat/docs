@@ -1,0 +1,81 @@
+---
+title: "Update a Copilot"
+api: "POST http://localhost:5000/api/copilot/:id"
+description: "Update single copilot by ID (it does not support changing the swagger file)"
+---
+
+### Body
+
+<ParamField path="id" type="string">
+  The uuid of the copilot
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="number">
+  Indicates whether the call was successful. 1 if successful, 0 if not.
+</ResponseField>
+
+<ResponseField name="user_group" type="object">
+
+The contents of the user group
+
+<Expandable title="Toggle object">
+
+<ResponseField name="team_id" type="number">
+  Indicates whether a new user group was created.
+</ResponseField>
+
+<ResponseField name="token" type="string">
+  This is the user group token (userGroupToken or USER_GROUP_TOKEN) that will be
+  used to identify which user group is viewing the dashboard. You should save
+  this on your end to use when rendering an embedded dashboard.
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  This is the name of the user group provided in the request body.
+</ResponseField>
+
+<ResponseField name="provided_id" type="string">
+  This is the user_group_id provided in the request body.
+</ResponseField>
+
+<ResponseField name="properties" type="JSON | Null">
+  This is the properties object if it was provided in the request body
+</ResponseField>
+
+<ResponseField name="api_environment_tag" type="JSON or null">
+  This is the environment tag of the user group. Possible values are 'Customer'
+  and 'Testing'
+</ResponseField>
+
+</Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location 'http://127.0.0.1:8000/api/copilot/:id' \
+--header 'Accept: application/json' \
+--form 'name="My new copilot name"' \
+--form 'prompt_message="My new prompt message"'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": 1,
+  "user_group": {
+    "team_id": 113,
+    "token": "<user_group_token_to_auth_dashboard>",
+    "name": "ok",
+    "provided_id": "6"
+  }
+}
+```
+
+</ResponseExample>

@@ -35,10 +35,17 @@
   ],
   "navigation": [
     {
-      "group": "Home",
+      "group": "Getting started",
+      "pages": ["introduction", "embed", "authorization"]
+    },
+    {
+      "group": "Endpoints (follow in order)",
       "pages": [
-        "introduction",
-        "authorization"
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/validate-get",
+        "api-reference/endpoint/update",
+        "api-reference/endpoint/delete"
       ]
     },
     {
