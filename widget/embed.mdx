@@ -8,23 +8,24 @@ OpenCopilot is a react web app that you can embed in your app. You can embed the
 
 ## How to embed the copilot in your app
 
-1. Download the copilot script
-   download the latest build from [Gtihub](https://github.com/openchatai/OpenCopilot/actions)
+1. Download the latest build from [GitHub](https://github.com/openchatai/OpenCopilot/actions)
    and extract the zip file.
 2. Make sure to include the copilot script in your app.
    ```html
-   <script src="https://opencopilot.so/pilot.js"></script>
+   <script src="https://yourdomain.com/pilot.js"></script>
    ```
 3. Init the copilot by calling the `initAiCoPilot` function.
    ```html
    <script>
      initAiCoPilot({
-       initialMessages: ["how are the things"], // optional: you can pass an array of messages that will be sent to the copilot when it's initialized
-       token: "your_copilot_token_goes_here", // you can get your token from https://cloud.opencopilot.so
+       apiUrl: "https://yourdomain.com/api" // your base url where your are hosting OpenCopilot at (the API), usually it's http://localhost:5000/api
+       initialMessages: ["How are the things"], // optional: you can pass an array of messages that will be sent to the copilot when it's initialized
+       token: "your_copilot_token_goes_here", // you can get your token from the dashboard
        triggerSelector: "#triggerSelector", // the selector of the element that will trigger the copilot when clicked
        headers: {
          // optional: you can pass your authentication tokens to the copilot or any other header you want to send with every request
          Authorization: "Bearer your_auth_token_goes_here",
+         AnyKey: "AnyValue"
        },
      });
    </script>
@@ -43,15 +44,15 @@ OpenCopilot is a react web app that you can embed in your app. You can embed the
 ## FAQ
 
 <AccordionGroup>
-  <Accordion title="the website is styled using tailwindcss is there will be style conflict?">
-    Don't worry, the copilot is styled using
-    [tailwindcss](https://tailwindcss.com/) but all the classes are preifixed so
-    there will be no style conflict.
+  <Accordion title="I have a style conflict with the widget">
+    The copilot is styled using
+    [tailwindcss](https://tailwindcss.com/) and all the classes are preifixed so it should not conflict with your
+    exising style, however, if so, please feel free to [open an issue on our GitHub repo](https://github.com/openchatai/OpenCopilot/issues/new)
   </Accordion>
 
-  <Accordion title="the copilot widget is not showing up">
-    make sure that the `triggerSelector` is correct and the element exists in
-    the dom, if it still doesn't work please open an issue on
-    [github](https://github.com/openchatai/OpenCopilot/)
+  <Accordion title="The copilot widget is not showing up">
+    Make sure that the `triggerSelector` is correct and the element exists in
+    the dom, if that did not work, please [open an issue on our GitHub repo](https://github.com/openchatai/OpenCopilot/issues/new)
+
   </Accordion>
 </AccordionGroup>

@@ -36,7 +36,14 @@
   "navigation": [
     {
       "group": "Getting started",
-      "pages": ["introduction", "embed", "authorization"]
+      "pages": ["introduction", "authorization"]
+    },
+    {
+      "group": "Copilot widget",
+      "pages": [
+        "widget/embed"
+      ],
+      "icon": "chat"
     },
     {
       "group": "Endpoints (follow in order)",
@@ -46,19 +53,6 @@
         "api-reference/endpoint/validate-get",
         "api-reference/endpoint/update",
         "api-reference/endpoint/delete"
-      ]
-    },
-    {
-      "group": "Copilot Widget",
-      "pages": [
-        "widget/embed"
-      ],
-      "icon": "chat"
-    },
-    {
-      "group": "Dashboard",
-      "pages": [
-        "dashboard/overview"
       ]
     }
   ],
