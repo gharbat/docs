@@ -6,46 +6,60 @@ description: "Get a list of all copilots in the database."
 
 ### Response
 
-<ResponseField name="success" type="number">
-  Indicates whether the call was successful. 1 if successful, 0 if not.
-</ResponseField>
+Array of JSON objects
 
-<ResponseField name="new_user_group" type="boolean">
-  Indicates whether a new user group was created.
-</ResponseField>
-
-<ResponseField name="user_group" type="object">
-
-The contents of the user group
-
-<Expandable title="Toggle object">
-
-<ResponseField name="team_id" type="number">
-  This is the internal ID for this user group. You don't need to record this information, since
-  you will not need to use it.
-</ResponseField>
-
-<ResponseField name="token" type="string">
-  This is the user group token (userGroupToken or USER_GROUP_TOKEN) that will be used to identify
-  which user group is viewing the dashboard. You should save this on your end to use when rendering
-  an embedded dashboard.
+<ResponseField name="id" type="string">
+  The unique identifier for the copilot.
 </ResponseField>
 
 <ResponseField name="name" type="string">
-  This is the name of the user group provided in the request body.
+  The name of the copilot ("My first copilot" in this case).
 </ResponseField>
 
-<ResponseField name="provided_id" type="string">
-  This is the user_group_id provided in the request body.
+<ResponseField name="token" type="string">
+  The token associated with the copilot ("L34L375dEvMxIuNKrTdy" in this case).
 </ResponseField>
 
-<ResponseField name="properties" type="JSON or null">
-  This is the properties object if it was provided in the request body
+<ResponseField name="website" type="string">
+  The website URL associated with the copilot ("https://www.example.com" in this case).
 </ResponseField>
 
-</Expandable>
-
+<ResponseField name="status" type="string">
+  The status of the copilot ("draft" in this case).
 </ResponseField>
+
+<ResponseField name="prompt_message" type="string">
+  A message describing the copilot's purpose and instructions.
+</ResponseField>
+
+<ResponseField name="enhanced_privacy" type="number">
+  A numeric value indicating enhanced privacy (0 in this case).
+</ResponseField>
+
+<ResponseField name="smart_sync" type="number">
+  A numeric value indicating smart synchronization (0 in this case).
+</ResponseField>
+
+<ResponseField name="swagger_url" type="string">
+  The URL to the Swagger documentation ("mbWwCbhHXqffJLEU98I8.json" in this case).
+</ResponseField>
+
+<ResponseField name="is_premade_demo_template" type="number">
+  A numeric value indicating whether it's a premade demo template (0 in this case).
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  The timestamp when the copilot was created ("2023-08-20T08:15:21.000000Z" in this case).
+</ResponseField>
+
+<ResponseField name="updated_at" type="string">
+  The timestamp when the copilot was last updated ("2023-08-20T08:15:21.000000Z" in this case).
+</ResponseField>
+
+<ResponseField name="deleted_at" type="null">
+  Indicates whether the copilot has been deleted (null in this case).
+</ResponseField>
+
 
 <RequestExample>
 
@@ -59,16 +73,24 @@ curl --location --request GET 'https://api.mintlify.com/api/user' \
 <ResponseExample>
 
 ```json Response
-{
-  "success": 1,
-  "new_user_group": true,
-  "user_group": {
-    "team_id": 3,
-    "token": "<user_group_token_to_auth_dashboard>",
-    "name": "Example 1",
-    "provided_id": "example_1"
-  }
-}
+[
+    {
+        "id": "bf1b1796-9639-48df-99f2-8e39ed4c0e9e",
+        "name": "My first copilot",
+        "token": "L34L375dEvMxIuNKrTdy",
+        "website": "https://www.example.com",
+        "status": "draft",
+        "prompt_message": "You are a helpful AI co-pilot. job is to support and help the user\nsometimes you might need to call some API endpoints to get the data you need to answer the user's question.\nyou will be given a context and a question, you need to answer the question based on the context.",
+        "enhanced_privacy": 0,
+        "smart_sync": 0,
+        "swagger_url": "mbWwCbhHXqffJLEU98I8.json",
+        "is_premade_demo_template": 0,
+        "created_at": "2023-08-20T08:15:21.000000Z",
+        "updated_at": "2023-08-20T08:15:21.000000Z",
+        "deleted_at": null
+
+    }
+]
 ```
 
 </ResponseExample>

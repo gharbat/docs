@@ -12,8 +12,8 @@ description: "Delete single copilot by ID "
 
 ### Response
 
-<ResponseField name="success" type="number">
-  Indicates whether the call was successful. 1 if successful, 0 if not.
+<ResponseField name="success" type="string">
+  Indicates whether the call was successful.
 </ResponseField>
 
 <RequestExample>
@@ -31,7 +31,7 @@ curl --location --request DELETE 'http://127.0.0.1:8000/api/copilot/:id' \
 
 ```json Response
 {
-  "success": 1
+    "success": "chatbot_deleted"
 }
 ```
 

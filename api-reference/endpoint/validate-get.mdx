@@ -12,48 +12,107 @@ description: "Validate a given swagger file and provide recommendations (first c
 
 ### Response
 
-<ResponseField name="success" type="number">
-  Indicates whether the call was successful. 1 if successful, 0 if not.
+<ResponseField name="chatbot_id" type="string">
+  The uuid of the copilot that was validated
 </ResponseField>
 
-<ResponseField name="new_user_group" type="boolean">
-  Indicates whether a new user group was created.
+<ResponseField name="all_endpoints" type="Array of endpoint objects">
+  <Expandable title="properties">
+    <ResponseField name="operationId" type="string">
+      The operation id of this endpoint, for best results make sure it's unique and representative
+    </ResponseField>
+
+    <ResponseField name="type" type="string">
+      The request method of the endpoint [POST, PUT, GET, DELETE]
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The name of the endpoint
+    </ResponseField>
+
+    <ResponseField name="description" type="string">
+      A description of the endpoint
+    </ResponseField>
+
+    <ResponseField name="requestBody" type="object">
+      The request body of the endpoint
+      <Expandable title="properties">
+        <ResponseField name="description" type="string">
+          Description of the request body
+        </ResponseField>
+        <ResponseField name="content" type="object">
+          The content types accepted by the endpoint
+          <Expandable title="properties">
+            <ResponseField name="application/json" type="object">
+              JSON content type
+              <Expandable title="properties">
+                <ResponseField name="schema" type="object">
+                  The schema for JSON content
+                  <Expandable title="properties">
+                    <ResponseField name="$ref" type="string">
+                      Reference to a schema definition
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name="application/xml" type="object">
+              XML content type
+              <Expandable title="properties">
+                <ResponseField name="schema" type="object">
+                  The schema for XML content
+                  <Expandable title="properties">
+                    <ResponseField name="$ref" type="string">
+                      Reference to a schema definition
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name="application/x-www-form-urlencoded" type="object">
+              Form data content type
+              <Expandable title="properties">
+                <ResponseField name="schema" type="object">
+                  The schema for form data content
+                  <Expandable title="properties">
+                    <ResponseField name="$ref" type="string">
+                      Reference to a schema definition
+                    </ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+        <ResponseField name="required" type="boolean">
+          Indicates if the request body is required for this endpoint
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+
 </ResponseField>
 
-<ResponseField name="user_group" type="object">
-
-The contents of the user group
-
-<Expandable title="Toggle object">
-
-<ResponseField name="team_id" type="number">
-  This is the internal ID for this user group. You don't need to record this information, since
-  you will not need to use it.
-</ResponseField>
-
-<ResponseField name="token" type="string">
-  This is the user group token (userGroupToken or USER_GROUP_TOKEN) that will be used to identify
-  which user group is viewing the dashboard. You should save this on your end to use when rendering
-  an embedded dashboard.
-</ResponseField>
-
-<ResponseField name="name" type="string">
-  This is the name of the user group provided in the request body.
-</ResponseField>
-
-<ResponseField name="provided_id" type="string">
-  This is the user_group_id provided in the request body.
-</ResponseField>
-
-<ResponseField name="properties" type="JSON or null">
-  This is the properties object if it was provided in the request body
-</ResponseField>
-
-</Expandable>
-
+<ResponseField name="validations" type="object">
+  Validations for various endpoints and properties
+  <Expandable title="properties">
+    <ResponseField name="endpoints_without_operation_id" type="array of endpoint objects">
+      Endpoints without operation id
+    </ResponseField>
+    <ResponseField name="endpoints_without_description" type="array of endpoint objects">
+      Endpoints without description
+    </ResponseField>
+    <ResponseField name="endpoints_without_name" type="array of endpoint objects">
+      Endpoints without name
+    </ResponseField>
+    <ResponseField name="auth_type" type="string">
+      The authentication type used [oauth2, apiKey, etc.]
+    </ResponseField>
+  </Expandable>
 </ResponseField>
 
 <RequestExample>
+
 
 ```bash Example Request
 curl --location 'http://localhost:5000/api/copilot/:id/validator' \
@@ -66,13 +125,260 @@ curl --location 'http://localhost:5000/api/copilot/:id/validator' \
 
 ```json Response
 {
-  "success": 1,
-  "new_user_group": true,
-  "user_group": {
-    "team_id": 3,
-    "token": "<user_group_token_to_auth_dashboard>",
-    "name": "Example 1",
-    "provided_id": "example_1"
+  "chatbot_id": "1ca91513-fc59-4868-9965-0112ca3393f4",
+  "all_endpoints": [
+    {
+      "operationId": "updatePet",
+      "type": "PUT",
+      "name": "Update an existing pet",
+      "description": "Update an existing pet by Id",
+      "requestBody": {
+        "description": "Update an existent pet in the store",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          },
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        },
+        "required": true
+      },
+      "requestParameters": null,
+      "responseBody": {
+        "200": {
+          "description": "Successful operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "404": {
+          "description": "Pet not found"
+        },
+        "405": {
+          "description": "Validation exception"
+        }
+      },
+      "path": "/pet"
+    },
+    {
+      "operationId": null,
+      "type": "POST",
+      "name": "Add a new pet to the store",
+      "description": "Add a new pet to the store",
+      "requestBody": {
+        "description": "Create a new pet in the store",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          },
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        },
+        "required": true
+      },
+      "requestParameters": null,
+      "responseBody": {
+        "200": {
+          "description": "Successful operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "405": {
+          "description": "Invalid input"
+        }
+      },
+      "path": "/pet"
+    },
+  ],
+  "validations": {
+    "endpoints_without_operation_id": {
+      "1": {
+        "operationId": null,
+        "type": "POST",
+        "name": "Add a new pet to the store",
+        "description": "Add a new pet to the store",
+        "requestBody": {
+          "description": "Create a new pet in the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          },
+          "required": true
+        },
+        "requestParameters": null,
+        "responseBody": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "path": "/pet"
+      }
+    },
+    "endpoints_without_description": {
+      "5": {
+        "operationId": "updatePetWithForm",
+        "type": "POST",
+        "name": "Updates a pet in the store with form data",
+        "description": "",
+        "requestBody": null,
+        "requestParameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name of pet that needs to be updated",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status of pet that needs to be updated",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responseBody": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "path": "/pet/{petId}"
+      },
+      "7": {
+        "operationId": "uploadFile",
+        "type": "POST",
+        "name": "uploads an image",
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "requestParameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to update",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "additionalMetadata",
+            "in": "query",
+            "description": "Additional Metadata",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responseBody": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "path": "/pet/{petId}/uploadImage"
+      },
+    },
+    "endpoints_without_name": [],
+    "auth_type": "oauth2"
   }
 }
 ```
