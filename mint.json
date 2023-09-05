@@ -51,6 +51,7 @@
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
         "api-reference/endpoint/validate-get",
+        "api-reference/endpoint/send",
         "api-reference/endpoint/update",
         "api-reference/endpoint/delete"
       ]
