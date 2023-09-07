@@ -1,6 +1,6 @@
 ---
 title: "Validate swagger file"
-api: "GET http://localhost:5000/api/copilot/:id/validator"
+api: "GET http://example.com/backend/api/copilot/:id/validator"
 description: "Validate a given swagger file and provide recommendations (first create a copilot then validate it here)."
 ---
 
@@ -115,7 +115,7 @@ description: "Validate a given swagger file and provide recommendations (first c
 
 
 ```bash Example Request
-curl --location 'http://localhost:5000/api/copilot/:id/validator' \
+curl --location 'http://example.com/backend/api/copilot/:id/validator' \
 --header 'Accept: application/json'
 ```
 
@@ -382,5 +382,4 @@ curl --location 'http://localhost:5000/api/copilot/:id/validator' \
   }
 }
 ```
-
 </ResponseExample>

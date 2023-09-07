@@ -1,8 +1,9 @@
 ---
 title: "Create Copilot"
-api: "POST http://localhost:5000/api/copilot/swagger"
+api: "POST http://example.com/backend/api/copilot/swagger"
 description: "This endpoint creates a new copilot from a swagger file"
 ---
+
 
 ### Body
 
@@ -68,7 +69,7 @@ description: "This endpoint creates a new copilot from a swagger file"
 <RequestExample>
 
 ```bash Example Request
-curl --location --request POST 'http://localhost:5000/api/copilot/swagger' \
+curl --location --request POST 'http://example.com/backend/api/copilot/swagger' \
 --header 'Accept: application/json' \
 --form 'name="My Copilot"' \
 --form 'prompt_message="You are AI copilot, your job is to help the user whenever needed ... "' \

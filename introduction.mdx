@@ -1,8 +1,53 @@
 ---
 title: Introduction
-description: "Welcome to OpenCopilot documentation, OpenCopilot is a free and open source AI copilot for your SaaS product"
+description: "OpenCopilot is a free and open-source tool that allows you to create AI copilots for your SaaS product. The copilot can communicate with your underlying APIs and execute calls as needed. We are open-source under MIT license and also support OpenAPI standards."
 icon: "book"
 ---
+
+
+## Getting started
+Update your docs to your brand and add valuable content for the best user conversion.
+
+<CardGroup cols={2}>
+    <Card
+        title="Setting up"
+        icon="palette"
+        href="#setting-up"
+    >
+        Install the project locally and make it yours
+    </Card>
+    <Card
+        title="Create copilots"
+        icon="code"
+        href="api-reference/endpoint/get"
+    >
+        Create copilots programmatically (APIs, SDKs) or using the dashboard
+    </Card>
+    <Card
+        title="Authentications and Authorization"
+        icon="screwdriver-wrench"
+        href="authorization"
+    >
+        Handle Authentications and Authorization to your backend
+    </Card>
+    <Card
+        title="Embedding copilots on your app"
+        icon="lightbulb"
+        href="widget/embed"
+    >
+        How to use OpenCopilot widget and embed it on your web app
+    </Card>
+    <Card
+        title="Roadmap"
+        icon="stars"
+        href="https://opencopilot.so/roadmap"
+    >
+        See what's coming next.
+    </Card>
+</CardGroup>
+
+
+
 
 ## Setting up
 
@@ -26,46 +71,35 @@ KEY OPENAI_API_KEY YOUR_KEY_GOES_HERE
 ```bash
 make install
 ```
-
 Then your OpenCopilot dashboard will be accessible at http://localhost:8000
 
-Complete list of ports:
 
-- http://localhost:5000 -> backend APIs (create, update, delete and validate copilots)
-- http://localhost:8000 -> dashboard (UI to do the same)
+----
 
-[//]: #
-[//]: # "## Make it yours"
-[//]: #
-[//]: # "Update your docs to your brand and add valuable content for the best user conversion."
-[//]: #
-[//]: # "<CardGroup cols={2}>"
-[//]: # "  <Card"
-[//]: # '    title="Authentication"'
-[//]: # '    icon="palette"'
-[//]: # '    href="https://mintlify.com/docs/settings/global"'
-[//]: # "  >"
-[//]: # "    Learn how to authenticate your users when the copilot is calling your APIs."
-[//]: # "  </Card>"
-[//]: # "  <Card"
-[//]: # '    title="Local Development"'
-[//]: # '    icon="code"'
-[//]: # '    href="https://mintlify.com/docs/api-playground/openapi"'
-[//]: # "  >"
-[//]: # "    Overview on the project structure and how to run it locally."
-[//]: # "  </Card>"
-[//]: # "  <Card"
-[//]: # '    title="Recommendations"'
-[//]: # '    icon="screwdriver-wrench"'
-[//]: # '    href="https://mintlify.com/docs/components/accordion"'
-[//]: # "  >"
-[//]: # "    Learn how to get the most out of your copilot."
-[//]: # "  </Card>"
-[//]: # "  <Card"
-[//]: # '    title="Roadmap"'
-[//]: # '    icon="stars"'
-[//]: # '    href="https://mintlify.com/showcase"'
-[//]: # "  >"
-[//]: # "    See what's coming next."
-[//]: # "  </Card>"
-[//]: # "</CardGroup>"
+You also can see the complete list of commands using `make help`
+```
+➜  OpenCopilot git:(main) make help
+Usage: make [target]
+
+Available Targets:
+
+  install            - Install and set up the Docker environment
+  db-setup           - Set up the database (fresh migration with seeding)
+  down               - Stop and remove all containers
+  exec-backend      - Access the backend container's shell
+  exec-dashboard    - Access the dashboard container's shell
+  exec-llm-server   - Access the llm-server container's shell
+  restart            - Restart all containers
+  logs               - Show container logs
+
+  help               - Display this help message
+```
+
+-----
+
+Complete list of links:
+
+- http://localhost:8888/backend -> backend APIs (create, update, delete and validate copilots)
+- http://localhost:8888 or http://localhost:8888/dashbaord -> dashboard (UI to do the same)
+
+

@@ -1,6 +1,6 @@
 ---
 title: "Update a Copilot"
-api: "POST http://localhost:5000/api/copilot/:id"
+api: "POST http://example.com/backend/api/copilot/:id"
 description: "Update single copilot by ID (it does not support changing the swagger file)"
 ---
 
@@ -64,7 +64,7 @@ description: "Update single copilot by ID (it does not support changing the swag
 <RequestExample>
 
 ```bash Example Request
-curl --location 'http://127.0.0.1:8000/api/copilot/:id' \
+curl --location 'http://example.com/backend/api/copilot/:id' \
 --header 'Accept: application/json' \
 --form 'name="My new copilot name"' \
 --form 'prompt_message="My new prompt message"'
