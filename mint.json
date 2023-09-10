@@ -39,6 +39,13 @@
       "pages": ["introduction", "authorization"]
     },
     {
+      "group": "Flows definition",
+      "pages": [
+        "flows"
+      ],
+      "icon": "rectangle-code"
+    },
+    {
       "group": "Copilot widget",
       "pages": [
         "widget/embed"
