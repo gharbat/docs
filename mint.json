@@ -62,6 +62,13 @@
         "api-reference/endpoint/update",
         "api-reference/endpoint/delete"
       ]
+    },
+    {
+      "group": "Api Flows",
+      "pages": [
+        "api-reference/endpoint/workflow/create_workflow",
+        "api-reference/endpoint/workflow/run_workflow"
+      ]
     }
   ],
   "footerSocials": {

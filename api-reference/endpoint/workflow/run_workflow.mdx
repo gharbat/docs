@@ -1,0 +1,56 @@
+---
+title: "Run predefined API flow"
+api: "POST http://127.0.0.1:5000/workflow/run_workflow"
+description: "Run a workflow to add and retrieve a pet, set the ship date for 1 dog."
+---
+
+## Request
+
+<ParamField body="text" type="string">
+  The text describing the workflow.
+</ParamField>
+
+<ParamField body="swagger_src" type="string">
+  The URL to the Swagger/OpenAPI specification.
+</ParamField>
+
+<ParamField body="namespace" type="string">
+  The namespace for the workflow.
+</ParamField>
+
+<ParamField body="server_base_url" type="string">
+  The base URL of the server.
+</ParamField>
+
+### Request Example
+
+```bash Example Request
+curl --location 'http://127.0.0.1:5000/workflow/run_workflow' \
+--header 'Content-Type: application/json' \
+--data '{
+    "text": "Add and retrieve a pet her name is luna, id: 1101, she is a labrador, then set the ship date for 1 dog for 11th September 2023",
+    "swagger_src": "https://petstore3.swagger.io/api/v3/openapi.yaml",
+    "namespace": "workflows",
+    "server_base_url": "https://petstore.swagger.io/v2"
+}'
+```
+
+## Response
+
+<ResponseField name="status" type="number">
+  The HTTP status code indicating the success or failure of the request.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  The response data.
+</ResponseField>
+
+### Response Example
+
+```json Response
+{
+  "status": 200,
+  "data": {
+    "message": "Workflow executed successfully."
+  }
+}
