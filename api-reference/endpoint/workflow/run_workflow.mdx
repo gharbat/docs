@@ -22,7 +22,7 @@ description: "Run a workflow to add and retrieve a pet, set the ship date for 1 
   The base URL of the server.
 </ParamField>
 
-### Request Example
+<RequestExample>
 
 ```bash Example Request
 curl --location 'http://127.0.0.1:5000/workflow/run_workflow' \
@@ -34,18 +34,9 @@ curl --location 'http://127.0.0.1:5000/workflow/run_workflow' \
     "server_base_url": "https://petstore.swagger.io/v2"
 }'
 ```
+</RequestExample>
 
-## Response
-
-<ResponseField name="status" type="number">
-  The HTTP status code indicating the success or failure of the request.
-</ResponseField>
-
-<ResponseField name="data" type="object">
-  The response data.
-</ResponseField>
-
-### Response Example
+<ResponseExample>
 
 ```json Response
 {
@@ -54,3 +45,6 @@ curl --location 'http://127.0.0.1:5000/workflow/run_workflow' \
     "message": "Workflow executed successfully."
   }
 }
+```
+
+</ResponseExample>
