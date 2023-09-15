@@ -41,7 +41,8 @@
     {
       "group": "Flows definition",
       "pages": [
-        "flows"
+        "flows",
+        "create-flow"
       ],
       "icon": "rectangle-code"
     },
