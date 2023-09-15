@@ -1,5 +1,5 @@
 ---
-title: "Create an Api Flow"
+title: "Create an APIs flow"
 api: "POST http://127.0.0.1:5000/workflow"
 description: "This JSON configuration defines workflows for the OpenCopilot API."
 ---
@@ -7,86 +7,6 @@ description: "This JSON configuration defines workflows for the OpenCopilot API.
 ## Overview
 
 This JSON configuration defines workflows for the OpenCopilot API.
-
-<ParamField body="opencopilot" type="string">
-  The OpenCopilot API version.
-</ParamField>
-
-<ParamField body="info.title" type="string">
-  The title of the API.
-</ParamField>
-
-<ParamField body="info.version" type="string">
-  The version of the API.
-</ParamField>
-
-## Workflows
-
-### Add and Retrieve Pet
-
-<ParamField body="flows[0].name" type="string">
-  Workflow name.
-</ParamField>
-
-<ParamField body="flows[0].description" type="string">
-  Workflow description.
-</ParamField>
-
-<ParamField body="flows[0].requires_confirmation" type="boolean">
-  Requires confirmation: true/false.
-</ParamField>
-
-#### Steps
-
-##### Step 1: Add a Pet
-
-<ParamField body="flows[0].steps[0].operation" type="string">
-  Operation: call.
-</ParamField>
-
-<ParamField body="flows[0].steps[0].open_api_operation_id" type="string">
-  OpenAPI operation ID: addPet.
-</ParamField>
-
-<ParamField body="flows[0].steps[0].description" type="string">
-  Step description: Add a pet.
-</ParamField>
-
-##### Step 2: Get Pet by ID
-
-<ParamField body="flows[0].steps[1].operation" type="string">
-  Operation: call.
-</ParamField>
-
-<ParamField body="flows[0].steps[1].open_api_operation_id" type="string">
-  OpenAPI operation ID: getPetById.
-</ParamField>
-
-<ParamField body="flows[0].steps[1].parameters.user_verification" type="string">
-  User verification: xx.response.some_key.
-</ParamField>
-
-##### Step 3: Place Order
-
-<ParamField body="flows[0].steps[2].operation" type="string">
-  Operation: call.
-</ParamField>
-
-<ParamField body="flows[0].steps[2].open_api_operation_id" type="string">
-  OpenAPI operation ID: placeOrder.
-</ParamField>
-
-#### On Success
-
-<ParamField body="flows[0].on_success[0].handler" type="string">
-  On success handler: plotOutcomeJsFunction.
-</ParamField>
-
-#### On Failure
-
-<ParamField body="flows[0].on_failure[0].handler" type="string">
-  On failure handler: plotOutcomeJsFunction.
-</ParamField>
 
 ---
 
