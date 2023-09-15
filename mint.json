@@ -41,7 +41,8 @@
     {
       "group": "Flows definition",
       "pages": [
-        "flows"
+        "flows",
+        "create-flow"
       ],
       "icon": "rectangle-code"
     },
@@ -64,7 +65,7 @@
       ]
     },
     {
-      "group": "Api Flows",
+      "group": "Flows APIs",
       "pages": [
         "api-reference/endpoint/workflow/create_workflow",
         "api-reference/endpoint/workflow/run_workflow"
