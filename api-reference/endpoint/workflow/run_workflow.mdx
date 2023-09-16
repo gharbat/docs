@@ -1,6 +1,6 @@
 ---
 title: "Run predefined API flow"
-api: "POST http://127.0.0.1:5000/workflow/run_workflow"
+api: "POST http://example.com/backend/flows/run_workflow"
 description: "Run a workflow to add and retrieve a pet, set the ship date for 1 dog."
 ---
 
@@ -25,7 +25,7 @@ description: "Run a workflow to add and retrieve a pet, set the ship date for 1 
 <RequestExample>
 
 ```bash Example Request
-curl --location 'http://127.0.0.1:5000/workflow/run_workflow' \
+curl --location 'http://example.com/backend/flows/run_workflow' \
 --header 'Content-Type: application/json' \
 --data '{
     "text": "Add and retrieve a pet her name is luna, id: 1101, she is a labrador, then set the ship date for 1 dog for 11th September 2023",
