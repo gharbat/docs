@@ -71,6 +71,7 @@
           "group": "Python SDK",
           "pages": [
             "sdk/python/init-client",
+            "sdk/python/types",
             "sdk/python/list-copilots",
             "sdk/python/create-copilot",
             "sdk/python/validate-swagger",
