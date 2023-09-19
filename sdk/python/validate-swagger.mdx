@@ -4,7 +4,7 @@ description: "Validate You Copilot Swagger File After Creating it"
 ---
 
 ``` python
-validation_notes = client.copilot.validate_copilot_swagger(
-    id=''
+validation_notes = open_copilot_client.copilot.validate_copilot_swagger(
+    id=uuid.uuid4()
 )
 ```

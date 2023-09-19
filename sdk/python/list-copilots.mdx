@@ -4,5 +4,23 @@ description: "Get a list of all copilots in the database."
 ---
 
 ``` python
-client.copilot.get_all()
+open_copilot_client.copilot.get_all()
+```
+
+### Array of Copilot objects
+``` python
+class Copilot():
+    id: uuid.UUID
+    name: str
+    token: str
+    website: str
+    status: ChatbotStatus
+    prompt_message: str
+    enhanced_privacy: bool
+    smart_sync: bool
+    created_at: dt.datetime
+    updated_at: dt.datetime
+    deleted_at: dt.datetime
+    swagger_url: str
+    is_premade_demo_template: bool
 ```
