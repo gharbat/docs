@@ -1,7 +1,7 @@
 ---
 title: "Run predefined API flow"
 api: "POST http://example.com/backend/flows/run_workflow"
-description: "Run a workflow to add and retrieve a pet, set the ship date for 1 dog."
+description: "This API endpoint will run one of your predefined conversational flows based on the input text's similarity score to known intents. Calling this endpoint directly is intended for testing purposes - it has already been unified with the /handle endpoint, which uses the large language model to decide whether to invoke a predefined flow or have an AI agent respond directly. The /handle endpoint is recommended for production usage, while this /run_workflow endpoint can be used to test that your conversational flows are triggering as expected before deploying."
 ---
 
 ## Request
@@ -10,7 +10,7 @@ description: "Run a workflow to add and retrieve a pet, set the ship date for 1 
   The text describing the workflow.
 </ParamField>
 
-<ParamField body="swagger_src" type="string">
+<ParamField body="swagger_url" type="string">
   The URL to the Swagger/OpenAPI specification.
 </ParamField>
 
@@ -22,16 +22,21 @@ description: "Run a workflow to add and retrieve a pet, set the ship date for 1 
   The base URL of the server.
 </ParamField>
 
+<ParamField body="base_prompt" type="string">
+  The initial system message.
+</ParamField>
+
 <RequestExample>
 
 ```bash Example Request
 curl --location 'http://example.com/backend/flows/run_workflow' \
 --header 'Content-Type: application/json' \
 --data '{
-    "text": "Add and retrieve a pet her name is luna, id: 1101, she is a labrador, then set the ship date for 1 dog for 11th September 2023",
-    "swagger_src": "https://petstore3.swagger.io/api/v3/openapi.yaml",
+    "swagger_url": "https://petstore3.swagger.io/api/v3/openapi.yaml",
     "namespace": "workflows",
-    "server_base_url": "https://petstore.swagger.io/v2"
+    "server_base_url": "https://petstore3.swagger.io/api/v3",
+    "base_prompt": "System alignment prompt",
+    "text": "List available pets and place order for the first pet in that list"
 }'
 ```
 </RequestExample>
