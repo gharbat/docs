@@ -65,6 +65,24 @@
       ]
     },
     {
+      "group": "Managing copilots via SDKs",
+      "pages": [
+        {
+          "group": "Python SDK",
+          "pages": [
+            "sdk/python/init-client",
+            "sdk/python/types",
+            "sdk/python/list-copilots",
+            "sdk/python/create-copilot",
+            "sdk/python/validate-swagger",
+            "sdk/python/update-copilot",
+            "sdk/python/delete-copilot",
+            "sdk/python/send-message"
+          ]
+        }
+      ]
+    },
+    {
       "group": "Flows APIs",
       "pages": [
         "api-reference/endpoint/workflow/create_workflow",

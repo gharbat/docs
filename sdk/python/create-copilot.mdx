@@ -1,0 +1,33 @@
+---
+title: "Create Copilot"
+description: "Create a new copilot from a swagger file"
+---
+
+``` python
+
+# get your swagger file
+swagger_file = request.urlopen('https://cdn.wsform.com/wp-content/uploads/2021/05/currency.csv')
+
+# Create Copilot from Swagger File
+my_copilot = client.copilot.create_copilot_from_swagger(
+    swagger_file=swagger_file,
+    name='My first copilot',  # optional
+    prompt_message="You are a helpful AI co-pilot. job is to support and help the user sometimes you might need to "
+                   "call some API endpoints to get the data you need to answer the user's question. you will be given "
+                   "a context and a question, you need to answer the question based on the context."  # optional
+)
+```
+
+### Method Arguments
+
+<ParamField body="swagger_file" type="file">
+    Your backend swagger file, it will help the copilot to know your backend in order to communicate with it whenever needed.
+</ParamField>
+
+<ParamField body="name" type="string or null">
+    The name of the copilot, if empty a default name will be given.
+</ParamField>
+
+<ParamField body="prompt_message" type="string or null">
+    The initial prompt message for the copilot, if empty a default prompt will be given (highly recommended to customize it for the best results)
+</ParamField>
