@@ -15,21 +15,37 @@ OpenCopilot is a react web app that you can embed in your app. You can embed the
    <script src="https://yourdomain.com/pilot.js"></script>
    ```
 3. Init the copilot by calling the `initAiCoPilot` function.
+
+   - With Plain JS
+
    ```html
    <script>
-     initAiCoPilot({
-       apiUrl: "https://yourdomain.com/api" // your base url where your are hosting OpenCopilot at (the API), usually it's http://localhost:5000/api
-       initialMessages: ["How are the things"], // optional: you can pass an array of messages that will be sent to the copilot when it's initialized
-       token: "your_copilot_token_goes_here", // you can get your token from the dashboard
-       triggerSelector: "#triggerSelector", // the selector of the element that will trigger the copilot when clicked
-       headers: {
-         // optional: you can pass your authentication tokens to the copilot or any other header you want to send with every request
-         Authorization: "Bearer your_auth_token_goes_here",
-         AnyKey: "AnyValue"
-       },
-     });
+     // be aware to call this function when the document/window is ready.
+      function InitTheCopilot(){
+       initAiCoPilot({
+        apiUrl: "https://yourdomain.com/api" // your base url where your are hosting OpenCopilot at (the API), usually it's http://localhost:5000/api
+        initialMessages: ["How are the things"], // optional: you can pass an array of messages that will be sent to the copilot when it's initialized
+        token: "your_copilot_token_goes_here", // you can get your token from the dashboard
+        triggerSelector: "#triggerSelector", // the selector of the element that will trigger the copilot when clicked
+        headers: {
+          // optional: you can pass your authentication tokens to the copilot or any other header you want to send with every request
+          Authorization: "Bearer your_auth_token_goes_here",
+          AnyKey: "AnyValue"
+        },
+      });
+
+      window.addEventListener("DOMContentLoaded", InitTheCopilot); // window.onload
+      }
    </script>
    ```
+
+- Pre-Existing JQery
+
+  ```html
+  <script>
+    $(document).ready(InitTheCopilot);
+  </script>
+  ```
 
 ## Available options
 
