@@ -47,6 +47,13 @@
       "icon": "rectangle-code"
     },
     {
+      "group": "Customization",
+      "pages": [
+        "dashboard/custom_state"
+      ]
+    },
+
+    {
       "group": "Copilot widget",
       "pages": [
         "widget/embed"
@@ -69,12 +76,6 @@
       "pages": [
         "api-reference/endpoint/workflow/create_workflow",
         "api-reference/endpoint/workflow/run_workflow"
-      ]
-    },
-    {
-      "group": "Customization",
-      "pages": [
-        "dashboard/custom_state"
       ]
     }
   ],
