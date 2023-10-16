@@ -70,6 +70,12 @@
         "api-reference/endpoint/workflow/create_workflow",
         "api-reference/endpoint/workflow/run_workflow"
       ]
+    },
+    {
+      "group": "Customization",
+      "pages": [
+        "dashboard/custom_state"
+      ]
     }
   ],
   "footerSocials": {
