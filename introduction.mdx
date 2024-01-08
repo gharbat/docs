@@ -82,9 +82,14 @@ OPENAI_API_KEY=YOUR_KEY_GOES_HERE
 
 - Run the installation script
 
+For linux and older macs
 ```bash
 make install
 ```
+
+For arm (mac silicon)
+```make install-arm```
+
 Then your OpenCopilot dashboard will be accessible at http://localhost:8888
 
 
@@ -98,6 +103,7 @@ Usage: make [target]
 Available Targets:
 
   install            - Install and set up the Docker environment
+  install-arm        - Install and set up the Docker environment
   db-setup           - Set up the database (fresh migration with seeding)
   down               - Stop and remove all containers
   exec-backend      - Access the backend container's shell
@@ -114,6 +120,6 @@ Available Targets:
 Complete list of links:
 
 - http://localhost:8888/backend -> backend APIs (create, update, delete and validate copilots)
-- http://localhost:8888 or http://localhost:8888/dashbaord -> dashboard (UI to do the same)
+- http://localhost:8888 or http://localhost:8888/dashboard -> dashboard (UI to do the same)
 
 

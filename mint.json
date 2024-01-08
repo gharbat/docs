@@ -36,7 +36,7 @@
   "navigation": [
     {
       "group": "Getting started",
-      "pages": ["introduction", "authorization"]
+      "pages": ["introduction", "authorization", "troubleshooting"]
     },
     {
       "group": "Flows definition",
