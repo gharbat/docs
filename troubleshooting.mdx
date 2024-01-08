@@ -1,0 +1,62 @@
+---
+title: "Troubleshooting Guide"
+description: "A guide to common errors and Swagger files for testing API calls"
+icon: "bug"
+---
+
+# Troubleshooting Guide
+
+## Table of Contents
+1. [Missing 'servers' field or invalid schema](#missing-servers-field-or-invalid-schema)
+2. [Unauthorized for url error](#unauthorized-for-url-error)
+3. [Validating OpenAPI Files](#validating-openapi-files)
+
+---
+
+## Missing 'servers' field or invalid schema
+
+### Problem
+This error indicates an issue with the API configuration related to the OpenAPI Specification, and it typically occurs due to one of the following reasons:
+- The required `servers` field is missing from the specification.
+- The schema is not properly defined according to OpenAPI standards.
+
+### Solution
+To resolve this error, ensure that your OpenAPI specification includes a valid `servers` field and adheres to the proper schema definition guidelines. Review the OpenAPI documentation to understand the correct format.
+
+#### Requirements
+- Includes required `'servers'` field
+- Uses valid [OpenAPI syntax](<https://swagger.io/docs/specification/basic-structure/>) for schemas
+- Follows [OpenAPI specification](https://swagger.io/docs/specification/about/) structure
+
+---
+
+## Unauthorized for url error
+
+### Problem
+The error:
+
+- Unauthorized for url: https://api.klarna.com/payments/v1/sessions/
+
+- The provided credentials or auth token are invalid or missing.
+
+### Solution
+Double-check authentication credentials/token, verify necessary permissions to access the URL, and ensure that the API key (if used) has the right permissions. For OAuth tokens, confirm that they are valid and have not yet expired. Refer to the API documentation for information about the authentication process.
+
+#### Steps
+- Validate authentication credentials/token
+- Confirm necessary permissions for the URL
+- Ensure a valid API key or OAuth token
+
+---
+
+## Validating OpenAPI Files
+
+### Introduction
+
+You can use the online [Swagger Editor Next](https://editor-next.swagger.io/) to validate OpenAPI files easily
+
+1. Paste in your OpenAPI spec
+2. Click "Validate"
+3. Look at the right panel for any reported errors
+
+---
